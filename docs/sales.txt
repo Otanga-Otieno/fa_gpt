@@ -1,0 +1,871 @@
+Sales
+Overview
+The FA system is very flexible in the way it can handle sales, from complete integration with a manufacturing process to just issuing invoices.
+
+Handling Pre Payments in FA | Cache
+You can use the complete sales process or just the steps you require depending on your operation. The menu options below are annotated with suggestions as to which Department would use them.
+
+Simple Sales Process
+Issue Invoice
+
+Intermediate Sales Process
+Despatch the goods
+Print Invoice
+
+Complex Sales Process
+Set up a Quotation
+Convert Quotation to a Sales Order
+Despatch the goods
+Print Invoice
+
+Sales Return and De-Allocation
+Sales Invoice is sent for products.
+Sales Invoice is paid by Customer.
+Customer is returning Items to us for some reason and the items are ok.
+Credit Note is sent to Customer.
+Bank Payment is sent to Customer as Compensation for returned Items.
+Go into Allocations, because the Credit Note has taken over the former allocation and the original Payment is left with no allocation. Use this original Payment for allocating your Bank Payment to the Customer and everything is correct.
+Alternatively, instead of doing the no. 5 above - Bank Payment to pay the customer as compensation - you can make an agreement with the customer to let the Customer Payment be there waiting for allocation of a future Sales Invoice.
+
+
+
+Transactions
+
+
+
+Sales Quotation Entry - Sales Office
+Purpose
+To create a Sales Quotations and thereon to view, modify, and print them.
+
+Procedure
+The Reference Field is generated automatically. Before a Quote can be created, you must previous have setup one each of the following:
+
+Item
+Customer
+Customer Branch
+You can also maintain items & customers in separate browser window but page refresh may be required to update.
+
+Tips and Tricks
+Most of the quotations we do are to non-customers (we are hoping they will become customers). Do I have to create customer/Branch when creating Sales Quotations.
+
+No, you don't. You have two options. In both options you have to create a dummy customer, say Sales Quotation. Select a non-cash payment terms. You don't need a customer address. Select a Pricelist.
+
+When you want to create a Sales Quotation, first create the client as a branch of customer Sales Quotation. Use the Billing Address as address.
+Now create a Sales Quotation. Select customer Sales Quotation and select the newly created branch. Add the items and save.
+or
+Create a Customer and Branch and name it Sales Quotation. Set payment to be non-cash.
+When creating a Sales Quotation, select Sales Quotation Customer and Branch.
+Below enter Deliver to and below enter Address. More information can be entered here too, but make a return (an entry) first.
+You can also use the Comment field for more info.
+You will have to use the pdf reader to send it manually to your customer.
+When the Quotation is accepted, you now create the customer/branch.
+Then just enter Quotation Inquiry, find the Deliver to name and press make order. Select the customer and you are going.
+It does not harm the Account Receivable ledger. Sales quotations does not make any GL posting and item booking.
+FAQ
+Tax is not displayed on Quote? Tax is not displayed if for some reasons no tax is applicable. For example when your customer is in group with no tax active (this is common for export in most countries). Please check tax system settings.
+
+
+
+Select Template For Delivery
+Use a pre-selected template for delivery.
+
+Purpose
+Submit a delivery based on Sales Order template entered previously.
+
+Procedure
+Select a template Sales Order for Delivery by clicking an icon on right hand side.
+Search Sales Orders using fields on the screen.
+
+Tips and Tricks
+Prepare a template using Sales Order Entry.
+
+
+
+Sales Order Entry - Shop
+
+Purpose
+Generate a new Sales Order.
+
+Procedure
+As with creating a Sales Quotation, one each of the following must have previously been created/setup prior to creating a new Sales Order (an error will be displayed if one of these things are missing):
+
+Item
+Customer
+Customer Branch
+Tips and Tricks
+To view all open Sales Orders use Sales Order Inquiry on the Sales tab.
+To make created Sales Order a template for Delivery documents or Invoices use Sales Order Inquiry and tick the Tmpl checkbox.
+If you Place your mouse pointer over any button, you will see an explaning text about what is going to happen.
+Notes
+Cancel Button: If creating a new sales order, this button cancels the Changes. If an existing order is being edited, pressing it means deleting the sales order.
+
+
+
+Select Template For Invoicing
+Use a pre-selected template for invoicing.
+
+Purpose
+Prepare an invoice based on Sales Order template.
+
+Procedure
+Select a template Sales Order for Invoice by clicking an icon on right hand side.
+Search Sales Orders using fields on the screen.
+
+Tips and Tricks
+Prepare a template using Sales Order Entry.
+
+
+
+Direct Delivery
+Delivery and Sales Order in one step.
+
+Purpose
+Create a Sales Order and mark it as '''Delivered' in a single step. This may be useful for situations where no intermediary steps, like manufacturing products(See: Work Order) or waiting for non-stock items to arrive, are needed.
+
+Procedure
+The steps and requirements for creating a Direct Delivery are covered under Sales Order Entry. It is important to note that this operation effectively skips the standard Sales Order step and flags it as delivered so that it can be invoiced immediately. This may be desirable if the material is in stock and being picked up or shipped at the moment the sales order is written up (a cash pick-up order for example); however, if items must be manufactured or delivery will delayed for any reason, than a standard Sales Order is required.
+
+Tips and Tricks
+If a Sales Order was prepared upfront create Delivery based on Sales Order. In this option you can also search outstanding Sales Orders.
+
+
+
+Create And Print Recurrent Invoices
+Create due Recurrent Invoice and print/email them.
+
+Purpose
+Generate Recurrent Invoices and then print or email them.
+
+Procedure
+setup recurrent invoices Recurrent Invoices
+for each line you can generate invoices according to previous setup
+after invoices are generated you will find links to:
+print invoices - all invoices will be sent to a pdf file
+email invoices
+Tips and Tricks
+An icon that allows generating invoices will appear only if current date is greater than Last Created + period.
+If Last Created is empty (when you just setup recurring invoices) then the icon is active if current date is greater than Begin + period.
+After invoices are created the icon remains inactive until the current date is greater than Last Created + period again.
+
+
+
+Direct Invoice
+Sales Invoice, Delivery and Sales Order in one step.
+
+Purpose
+Create an Invoice without a Sales Order. This method allows you to create an invoice directly, skipping the following steps entirely:
+
+Creating a Sales Order
+Flagging a Sales Order as Delivered (allowing quantities to be adjusted or back-orders to be created)
+Creating a Work Order or Purchase Order for manufactured and non-stock items respectfully.
+Auto population of Price before Tax will happen only if Setup => Display Setup => Show Item Codes is checked.
+If you need to do any of the above steps, most notably creating back-orders or manufacturing items, it is recommended you use the Sales Order Entry method instead.
+
+When entering a direct sales invoice Sales Order and Delivery documents will be created automatically with a reference number set to Auto.
+
+Warning: Creating a direct invoice can not be reversed! If any mistakes are made you will need to create another invoice, or credit note, to fix any errors.
+
+Procedure
+The steps and requirements for creating an invoice directly are covered under Sales Order Entry. By default, this operation will not allow an invoice to be created if the stock level of any item will become less than 0.
+
+Tips and Tricks
+To modify some invoice parameters go to Customer Transaction Inquiry.
+To override the default setting preventing inventory of any item to be less than zero (you will receive a warning), go to: Setup->System and General GL Setup and under the Inventory heading check-mark the box: Allow Negative Inventory.
+If not using inventory set Item Type of a specific item to Service in the item list.
+Sales price can be calculated from a Standard Cost. Set your margin in Company Setup.
+Set your sales prices upfront for commonly used items. You can set sales prices separately for each Price List selected in the invoice header. If set, will override Standard Cost calculation.
+During Order Processing and Invoicing, change payment terms in a combobox. If this facility is unavailable, enable it by:
+Check Setup -> Points of Sale and make sure that Allowed credit sale terms selection and Allowed cash sale terms selection are checked.
+Check Setup -> Access Setup -> Sales Transactions and see if it is enabled for the user needing the said privilege.
+When creating a direct sales invoice, the cash payment is made to the account set in the Setup => POS Setup and it is on a per user basis.
+
+Quick Workflow
+To make a Direct Invoice on just one screen:
+
+Just enter Direct Invoice page
+Press F2 when you are focused on customer selector
+Enter new customer info and save it
+Then use cash payment option which also registers payment for invoice in single step
+List all unpaid invoices under Customer Allocation Inquiry
+Here you can select any unpaid invoice by customer name, and select to enter payment for selected customer's unpaid invoices presented.
+The only improvement needed is adding a link back to Customer Allocation Inquiry on final payment screen, beside this all payment processes use the same scheme like the delivery/invoicing.
+
+
+
+Customer Payment Entry
+Customer Payment and optional Allocation.
+
+Purpose
+Make an A/R deposit into a customer's account.
+
+Procedure
+Select the customer's account from drop-down combo-box. If there is more than one branch/location for this customer, select the correct one from the second combo-box.
+Select the bank account the deposit should be made to. List of Bank Accounts can be setup in Banking and General Ledger module.
+If needed, change the date of the deposit.
+Enter the full amount of any additional bank charges (NSF charge, Cheque certification, etc).
+Enter the discount taken by the customer (the discount they are qualified to take will be shown above this line).
+Enter the full amount of the deposit.
+Optionally, enter a memo/note about the deposit. This may be something as simple as the type of payment(VISA/Mastercard/Direct Deposit/Cheque/etc.) or cheque number.
+In order to apply this payment to individual invoices, you must select Allocate Customer Payments or Credit Notes from the Sales tab, after you have finished entering payments.
+
+Tips and Tricks
+A reference number will be generated automatically. It is not, typically, a good idea to change/set this number manually.
+Exchange rates are applied automatically. If the wrong exchange rate is listed, you may need to adjust the following:
+Setup Tab->Company Setup - Set the correct currency for your company/country.
+Sales Tab->Add and Manage Customers - Set the correct currency for your customer.
+Banking and General Ledger Tab->Exchange Rates - Set/Update the correct exchange rate for the currency in question.
+A/R and customer record with foreign currency
+If you use the Sales | Customer Payments method it works correctly.
+However, if you process a Bank | Deposit, then Sales | Customer Allocation the customer allocation process does not process the foreign currency difference correctly (it gets it backward, and doesn't take the difference between the settled amount and the original invoice amount in AR).
+Bank Deposit Entry is for receiving a customer payment.
+Bank Payment Entry is for paying a supplier.
+Bad debtors
+From time to time you may experience a bad debtor, not settling his payment. Before you can write him off, your local legislations may require that you make legal effort to collect his money. However, we got a good suggestion from Rod Webster on how to handle a bad debtor when nothing else had helped:
+
+Create a service item f.i. 'Bad Debtor' with no price in Items.
+Use the same Item Tax Type as you used originally against the debtor.
+Make a free Credit Note to this debtor using the service item 'Bad Debtor'. Set the price to the same as the sub-total in the original invoice. Use write off items. You don't have to send it to the debtor. He is probably already bankrupcy.
+This will handle all GL transactions in a correct way and the tax will be counter-booked.
+Prepayment
+If the Payment Terms is set to be of type pre payment, then the days is set internally to -1.
+This will display a due date to be the document day - 1. This is ok.
+This way it is easy to see that the payment terms is pre payment.
+Prepayment in 2.4
+This is incomplete and possibly inaccurate, but given that I can find nothing else, hopefully this gives others a place to start. please fine tune it...
+Under Setup=>Payment Terms, there must be a payment option with type Prepayment
+When creating a sales order:
+at the top set payment to be your prepayment option
+at the bottom, fill the value of the prepayment in the Pre-Payment Required field
+Go to sales=>Invoice prepaid orders:
+on the right will be an option to create prepayment invoice
+at the top set your payment terms to be your prepayment option
+at the bottom, it should show your prepayment as being invoiced here, and the amount left to be invoiced
+Some other steps that I can't quite sort out
+payment needs to be entered
+Delivery against sales order must be processed
+Go to sales=>Invoice prepaid orders:
+You should have an option to create the final invoice now
+at the top, select the normal payment method.
+in my case, the previous payments were not shown on the screen, but the prepayment was shown on the invoice, and the correct value is displayed in the customer payments page.
+Bounced Cheques
+Bounced cheques are one of the most common offences plague the monetary world. You please present the cheque again and on receipt of the information about the bounce of the cheque you instantly issue notice within 30 days from the receipt of the information of bounce of the cheque to the client.
+
+If nothing appears on Bank Statement then just cancel the payment in FA.
+If both transaction (the payment and the bouncing) appear on your statement:
+First make a payment (General Ledger/Payment) and chose customer (in Pay to) - First trick
+Enter the date when the check bounced.
+Need to probably use the normal Debtor account.
+Now, deallocate the bounced payment from the invoice and reallocate it to your payment.
+Go to Customer allocation
+Tick the show settle allocation box. You should see the bounced payment - Second trick
+Reallocate it (press the bank notes icon).
+Change the amount allocated to the invoice to 0 (or press None)
+Allocate it to YOUR payment (your payment should appear as allocatable as other invoices) - Third trick
+Press Ok
+
+
+
+Delivery Against Sales Orders - Warehouse
+Select Sales Order and dispatch goods. Search outstanding Sales Orders.
+
+Purpose
+Dispatch items ready for shipping from a Sales Order in preparation for invoicing.
+
+Procedure
+After a Sales Order has been completed, and inventory requirements are satisfied, an order must be set as delivered in order for it to be invoiced. It is a good idea to do the following:
+
+Check each line item is the correct quantity.
+Confirm that short-shipped items will be either back ordered or canceled.
+Make sure freight being charged is correct.
+Click Process Dispatch to finish.
+
+Tips and Tricks
+If you want to skip the standard Sales Order step and flag goods as delivered use Direct Sales Delivery.
+
+
+
+Customer Credit Note
+Purpose
+Generate a credit note for customer reimbursement.
+
+Procedure
+Enter each line item as if a Sales Order were being entered. If the material is to be returned to stock, select the correct option from the Credit Note Type combo-box and location/warehouse it is being be returned to. Otherwise (Items Written Off), if material is NOT going to be returned to stock (credit only) select the GL Account to be adjusted.
+
+If there is no material involved and a mere credit note is desired to be passed on to a customer by way of say discount amount in settlement after the invoice was raised, there is no place to enter the amount other than in Shipping. It is possible to create a dummy service item assigned with negative amount during Customer Credit Note creation to accommodate this situation.
+
+Tips and Tricks
+If some material will be returned to stock, but others won't, they will need to be on separate credit notes.
+
+To issue a refund to a customer:
+
+Create the credit note as above
+Banking and General Ledger->Payments
+Select the bank account, customer to issue to the payment, and the amount of the credit.
+Sales->Allocate Customer Payments or Credit Notes
+Allocate the payment to the credit note
+
+
+
+Invoice Against Sales Delivery - Accounts
+
+Purpose
+Invoice shipped materials from a Delivery.
+
+Procedure
+Once a Sales Order has been dispatched for delivery, an invoice can be created. Click on the invoice button to invoice a delivered sales order. Once an invoice has been produced it can't be changed so it is imperative the following is checked:
+
+Each line item is the correct quantity.
+Make sure freight being charged is correct.
+Any notes(memos) are correct.
+Once finished, click Process Invoice button.
+
+Tips and Tricks
+A batch invoice, a single invoice created from multiple work orders/deliveries, can be processed if all items have been sent to the same location. Click the check-box beside each delivery and click the Batch button at the top of the column to make such an invoice.
+
+Editing Qty/Value in Sales Order before invoicing
+The model of cooperation with customer implemented in FA assumes that the price is known and confirmed at the moment of ordering.
+
+If services are sold assuming quote on hourly basis, enter a maximal confirmed value during order receipt.
+When final work is shorter than maximum confirmed, write off the rest of order during delivery note issue.
+This is how the final price agreement is implemented, at least for now.
+
+
+
+Allocate Customer Payments or Credit Notes
+Allocate your Payments from Customer
+
+Purpose
+Browse Customer Allocations.
+
+Procedure
+Select a customer
+Use icon on the right hand side to allocate customer payment against an invoice
+Credit notes can be also allocated against invoices
+After customer payment is allocated you will be re-directed to Customer Allocation Inquiry screen
+Tips and Tricks
+Use Show Settled Items checkbox to see also settled documents for a reference. You can also change allocations here.
+When you allocate the customer deposit balance, you should select the bank payment to be allocated for this record.
+
+
+
+Inquiries and Reports
+
+
+
+Sales Quotation Inquiry
+
+Purpose
+This Inquiry shows the Sales Quotations for a given period. You have the option to look at an entire Quotation, edit a Quotation, print a Quotation and make a Sales Order from a Quotation.
+
+Procedure
+If the Valid until on the Sales Quotations have been passed, the Sales Quotation is not shown for the period. But you can select Show All and all the Sales Quotation inside the period will be shown.
+
+You can also extend the period, minimize the period or filter the Inquiry by Location and/or Item.
+
+The Sales Quotations will not be deleted, so it is possible to use it again and maybe edit it for later use.
+
+The Sales Quotations can however be deleted when editing, and when deleting a fiscal year, the Quotations will be deleted.
+
+The Sales Order print out can still be selected to be printed as a Quote should you prefer that.
+
+
+
+Sales Order Inquiry
+
+Purpose
+This Inquiry shows the Sales Orders for a given period. You have the option to look at an entire Quotation, Mark a Sales Order to be a Template for Deliveries/Invoices, edit an Order and print an Order.
+
+Procedure
+You can extend the period or minimize the period or filter the Inquiry by Location and/or Item.
+
+The Sales Orders can however be deleted when editing. And when deleting a fiscal year, the Orders inside the fiscal year will be deleted.
+
+The Tmpl checkbox needs to be checked (ticked) to enable it to be used in Template Invoices and Template Deliveries. This will toggle the sales_orders.type field between boolean 0 and 1.
+
+Tips and Tricks
+Sales Ordered may be used as templates for other documents. If you need a specific Sales Order to be a template use 'Tmpl column.
+Use templates in:
+
+Select Template For Delivery
+Purpose
+Submit a delivery based on Sales Order template entered previously.
+
+Procedure
+Select a template Sales Order for Delivery by clicking an icon on right hand side.
+Search Sales Orders using fields on the screen.
+
+Tips and Tricks
+Prepare a template using Sales Order Entry.
+
+Purpose
+Submit a delivery based on Sales Order template entered previously.
+
+Procedure
+Select a template Sales Order for Delivery by clicking an icon on right hand side.
+Search Sales Orders using fields on the screen.
+
+Tips and Tricks
+Prepare a template using Sales Order Entry.
+
+Invoicing based on a Template
+Purpose
+Select a template Sales Order for a Customer Invoice.
+
+Procedure
+Select a template Sales Order for an Invoice by clicking an icon on right hand side.
+Search Sales Orders using fields on the screen.
+
+Tips and Tricks
+Prepare a template using Sales Order Entry.
+
+Recurrent Invoices
+
+Purpose
+Recurrent Invoices are used where you have invoices with the same Item lines that you want to send to a customer branch or a group of customer branches on a regular basis, e.g. rental invoices that are sent out monthly. Imagine you have 100 customers that need a monthly rental invoice. By using Recurrent Invoices you only have to press a button to send them by email or print them out.
+
+There are two ways of using recurrent invoices. You can either select a group or a single customer/branch.
+
+If you are going to use groups, start by creating the groups you will put on the branches, e.g. Large, Medium and Small
+
+Go into the branches, Sales > Maintenance > Customer Branches, locate the customer, set the appropriate Sales Group and update the branch.
+
+This Forum Post discusses Recurring Invoices from v2.1 onwards.
+
+Procedure
+You are now ready to make some recurrent invoice definitions by clicking Recurrent Invoices in the Sales tab, Maintenance section.
+The recurrent invoices use the Template Orders, that are shown under Template Delivery/Template Invoice in the Sales tab, Transactions section.
+
+Template Orders are based on issued invoices, so you have to set up and send out an invoice before you can mark it as a template.
+
+First enter a Description of the item. Select the appropriate template. If this should be addressed to a single customer/branch, select a customer and a branch. If it should be based on a group, leave the customer empty and select the group to which you want to send the recurrent invoices.
+
+Now it is time to consider the interval of the invoicing. If you select days and set the monthly value to 0, it will be due every x days. If you select a monthly value, it will be due on an x monthly interval. -and if you select a days value it will be due on that day in the month-. From Release 2.3.5 you choose the day value by setting the actual beginning date. You can change existing recurrent invoices by changing the Last Sent day. A days value of -1 together with a month value would be the last day in the previous month. A monthly value of 3 indicated a due every quarter and 12 every year and so on.
+
+The begin date is the date to start sending the recurrent invoice and the end date when to stop sending the invoices.
+
+Create and print the recurrent invoices
+Before creating recurring invoices, check that the price factor in company setup is set. Also check that a sales prices are set in the item sales prices. It must not be zero. If you have foreign customers the price is automatically calculated. Go to Create And Print Recurrent Invoices in the Sales tab, Transactions section. The due items are marked and a link Create invoices will be there. Pressing this link creates all the invoices belonging to this group or single customer/branch. An info line tells you how many invoice-numbers that have been created along with links to print or email the invoices.
+
+Tips and Tricks
+If you need more than one group for a customer, create additional branches each with the required group. In order to easily identify this call the branch something similar to the group.
+
+
+
+Customer Transaction Inquiry
+
+Purpose
+Useful to reprint invoices. Preferable to have the menu list of invoice output links as available when the invoice is first prepared.
+
+Procedure
+Click the Print icon in the right most column of the preferred document (Invoice, Delivery Note, Order, etc).
+Use Edit icon to modify some invoice parameters. Edit Invoice
+Click Credit This icon to create a Credit Note.
+
+Tips and Tricks
+Field debtor_trans.tpe
+Reference to 'Wholesale', 'Retail', etc. pricing factors.
+
+Database inconsistency resolution for debtor transactions
+In some rare instances, a payment may be added which has no GL transactions. Customer Transactions report will show a debit of 0.00. GL will show for example: No general ledger transactions have been created for Customer Payment number 5 and clicking the transaction number 5 will result in a Database Error. Customer Payment is transaction type 12.
+
+This issue is resolved by resetting the concerned tables for the said transaction 5 with:
+
+DELETE FROM 0_debtor_trans WHERE type=12 and trans_no=5;
+DELETE FROM 0_debtor_trans_details WHERE debtor_trans_type=12 and debtor_trans_no=5;
+DELETE FROM 0_bank_trans WHERE type=12 trans_no=5;
+
+
+
+Customer Allocation Inquiry
+Purpose
+Browse Customer documents. Check unpaid.
+
+Procedure
+Select a customer
+Restrict document range by dates
+Choose document types and click Search
+Use icon on the right hand side to allocate customer payment against invoices
+Tips and Tricks
+Use show settled checkbox to see also settled documents for a reference. You can also change allocations here.
+Overdue items are shown in different color.
+
+
+
+Maintenance
+
+
+
+Add and Manage Customers
+Purpose
+Maintain your customer list.
+
+Procedure
+Manual Import of Customers
+FrontAccounting Web User Interface Customer Data Entry Methods
+Fill in data and click Add New Customer below.
+Select a customer on the drop down list, modify data and click Update Customer.
+From release 2.3.21 you can search by short name, name and tax id.
+Forum Post discusses better Customer Search options for implementation.
+If you're missing customers on the drop down list see Tips & Tricks section below.
+
+Contacts.
+Maintain contact list for a selected customer using tab Contacts.
+
+Here are the rules for emailing contacts in Customers, Branches and Suppliers. Each item is referring to a Contact Category.
+
+- 'invoice' for invoices, and statement and receipts
+- 'delivery' for deliveries
+- 'order' for orders and quotations
+- 'general' for everything
+
+EVERY reports will send an email to everybody from the current and the main company will match those criteria except for statement and receipts.
+
+Example the invoice report will send an email to (if existing) - branch.invoice - branch.general - customer.invoice - customer.general.
+
+For statement and receipt only the first person (in that order) will receive the email.
+
+So, a contact set as general on the customer settings, will receive every emails except from statement and receipt (except if nobody else get this email).
+
+To summarize, general mean all and customers receive email for every branch.
+
+Tips and Tricks
+If you send out Customer Statements from the Report Center by email, it is important that you put an email on the customer (not only the branch).
+
+Many Customers?
+If you have many records you can enable Search Customer List in Company setup. You can then start a search by pressing a space in the Customer List, or use the edit box in front of the list if such one is available. Now enter fragment of Customer name and press tab. The list will now be populated with relevant records. If you enter a *, all records will be shown.
+
+Missing Drop Down Boxes for Customers
+Unless the Setup -> Company Setup Search Customer List check box is left untickled, there will be no existing customers in the drop down box display under the New Customers.
+
+Press Space Bar, enter star sign (*) or enter characters that will be search in customer names. After pressing Enter drop down list will be supplied with customer names found by the filter.
+
+Deleting a customer entry
+If you entered a document for a customer you can't delete it anymore. Set Customer status to Inactive instead.
+
+Changing Address
+Changing the Customer Address will not show up in reports if there exists a Branch Address which is what gets into the reports.
+
+
+
+Sales Types
+
+Purpose
+Sales Types allow you to define pricing levels for specific types customers. A very common separation is between retail and wholesale customers. Depending on your primary customer base, you may either provide a discount or up-charge for a particular group.
+
+For example, if 75% of your business is wholesale, and the balance retail, you would likely use your wholesale pricing as your base price list, and add some kind of up-charge for your retail customers:
+
+Wholesale - base
+Retail - 1.25 (25% up-charge)
+
+Were the roles reversed, you may do something like:
+
+Retail - base
+Wholesale - 0.75 (25% discount)
+
+Promotions, penalties for habitually late-paying or problematic customers, or any other situation where you may want to provide a standard deviation on all items a specific customer may buy.
+
+Markup over Standard cost too is available.
+
+Procedure
+New Sales Type:
+Enter the name of the new Sales Type under Sales Type Name.
+Enter the factor by which to adjust base pricing.
+Check the Tax included box if taxes should be a factor when making the calculation.
+Click Add new.
+Modify Sales Type: Click the edit icon and follow the instructions for creating a new group. Click Update to complete, or Cancel to go back.
+Delete Sales Type: Click the delete icon to remove a Sales Type.
+Tips and Tricks
+A Sales Type may not be deleted if any transactions using it exist.
+Create a list of Sales Pricing for each Sales Type
+
+
+
+Customer Branches
+
+Purpose
+A customer must have one customer branch in order to issue sales and / or delivery orders. If your customer is a business (instead of a person) then that business may have several branches each with a different address. If your customer is an individual then it is likely they do not have multiple branches. For an individual you still need to enter a default branch in order to issue a sale.
+
+Procedure
+Sales -> Add and Manage Customers -> Customer Branches add or edit
+Sales -> Customer Branches -> Update (to make sure that each customer has at least one branch)
+set parameters:
+Sales Person - the list can be maintained in Sales -> Sales Persons
+Sales Area - the list can be maintained in Sales -> Sales Areas
+Sales Group - the list can be maintained in Sales -> Sales Groups
+Default Inventory Location - the list can be maintained in Items and Inventory -> Inventory Locations
+Default Shipping Company - the list can be maintained in Items and Setup -> Shipping Company
+Tax Group - the list can be maintained in Items and Setup -> Tax Groups
+Sales Account - set to Use Item Sales Accounts
+Sales Discount Account - select an account to post discounts on sales invoices
+Accounts Receivable Account - select an account to post receivables; default account can be set in Setup -> System and General GL Setup
+Shipping Address
+If the Mailing Address on the branch is set then this address is used for delivery for credit deliveries/orders/invoices.
+For cash sales the customers address is used.
+Contacts.
+
+Here are the rules for emailing contacts in Customers, Branches and Suppliers. Each item is referring to a Contact Category.
+
+- 'invoice' for invoices, and statement and receipts
+- 'delivery' for deliveries
+- 'order' for orders and quotations
+- 'general' for everything
+
+EVERY reports will send an email to everybody from the current and the main company will match those criteria except for statement and receipts.
+
+Example the invoice report will send an email to (if existing) - branch.invoice - branch.general - customer.invoice - customer.general.
+
+For statement and receipt only the first person (in that order) will receive the email.
+
+So, a contact set as general on the customer settings, will receive every emails except from statement and receipt (except if nobody else get this email).
+
+To summarize, general mean all and customers receive email for every branch.
+
+Tips and Tricks
+Deleting a customer branch
+If you entered a document for a customer branch you can't delete it anymore. Set Disable this Branch to Yes instead.
+
+
+
+Sales Persons
+
+Purpose
+Here you can add/edit and delete your sales persons details. Also you can add a 2 level Provision / commission for each one of them.
+
+Procedure
+Regarding "Provision" Function: If you have Sales Persons that get provision (commission) on what they sell, e.g.10% (Provision) of sales up to $2000 (Break Pt.) and then a lower or higher percent (Provision 2) of the rest the sales persons' sales.
+
+If you check the check box "Show also Inactive" an extra column will appear in the table to give you the ability to de-activate an active sales person or activate an inactive one.
+
+Tips and Tricks
+You can set the values as 0 if you do not intend to use them. Assign Sales Persons to individual Customer Branches. Report sales by Sales Persons.
+
+
+
+Sales Groups
+
+Purpose
+Define customer groupings and/or classifications. This is useful for tracking sales figures for a particular sub-set of your customer base. This may be something as simple as:
+
+Small
+Medium
+Large
+
+...customers or more complex situations where the type of customer is used.
+
+An example of a more complex customer group for a building supplies company may be:
+
+Small Cabinet Manufacturer
+Large Cabinet Manufacturer
+Small Furniture Mfg
+Large Furniture Mfg
+Small General Contractor
+Large General Contractor
+Retail Customer
+The number, and complexity, of these groups are up to your discretion.
+
+Procedure
+Enter the name of the group you wish to add under Group Name input field and click Add new.
+In order to edit existing groups, simply click on the edit icon beside the group name.
+To remove a group, click on the delete icon.
+Tips and Tricks
+Assign individual Customer Branches to specific Sales Groups.
+
+
+
+Sales Areas
+
+Purpose
+Define as many Sales Areas as you need.
+
+Procedure
+Enter the name of the area you wish to add under Area Name input field and click Add new.
+In order to edit existing areas, simply click on the edit icon beside the area name.
+To remove an area, click on the delete icon.
+Tips and Tricks
+Assign Sales Areas to individual Customer Branches. Report sales by Sales Areas.
+
+
+
+Recurrent Invoices
+Configure Invoices to be sent on a regular basis.
+
+Purpose
+Recurrent Invoices are used where you have invoices with the same Item lines that you want to send to a customer branch or a group of customer branches on a regular basis, e.g. rental invoices that are sent out monthly. Imagine you have 100 customers that need a monthly rental invoice. By using Recurrent Invoices you only have to press a button to send them by email or print them out.
+
+There are two ways of using recurrent invoices. You can either select a group or a single customer/branch.
+
+If you are going to use groups, start by creating the groups you will put on the branches, e.g. Large, Medium and Small
+
+Go into the branches, Sales > Maintenance > Customer Branches, locate the customer, set the appropriate Sales Group and update the branch.
+
+Procedure
+You are now ready to make some recurrent invoice definitions by clicking Recurrent Invoices in the Sales tab, Maintenance section.
+The recurrent invoices use the Template Orders, that are shown under Template Delivery/Template Invoice in the Sales tab, Transactions section.
+
+Template Orders are based on issued invoices, so you have to set up and send out an invoice before you can mark it as a template.
+
+First enter a Description of the item. Select the appropriate template. If this should be addressed to a single customer/branch, select a customer and a branch. If it should be based on a group, leave the customer empty and select the group to which you want to send the recurrent invoices.
+
+Now it is time to consider the interval of the invoicing. If you select days and set the monthly value to 0, it will be due every x days. If you select a monthly value, it will be due on an x monthly interval. -and if you select a days value it will be due on that day in the month-. From Release 2.3.5 you choose the day value by setting the actual beginning date. You can change existing recurrent invoices by changing the Last Sent day. A days value of -1 together with a month value would be the last day in the previous month. A monthly value of 3 indicated a due every quarter and 12 every year and so on.
+
+The begin date is the date to start sending the recurrent invoice and the end date when to stop sending the invoices.
+
+Create and print the recurrent invoices
+Before creating recurring invoices, check that the price factor in company setup is set. Also check that a sales prices are set in the item sales prices. It must not be zero. If you have foreign customers the price is automatically calculated. Go to Create And Print Recurrent Invoices in the Sales tab, Transactions section. The due items are marked and a link Create invoices will be there. Pressing this link creates all the invoices belonging to this group or single customer/branch. An info line tells you how many invoice-numbers that have been created along with links to print or email the invoices.
+
+Tips and Tricks
+If you need more than one group for a customer, create additional branches each with the required group. In order to easily identify this call the branch something similar to the group.
+
+
+
+Credit Status Setup
+
+Purpose
+Maintain list of Credit Statuses
+
+Procedure
+Enter description of the Credit Status you wish to add and click Add new.
+Use Disallow invoicing field to control if users are allowed to submit customer invoices.
+In order to change existing Credit Status, simply click on the edit icon beside its name.
+To remove Credit Status, click on the delete icon.
+Tips and Tricks
+Select an item from the list when managing Add and Manage Customers.
+
+
+
+Also available
+
+
+
+Credit Note
+
+Purpose
+Credit all or part of the invoice selected.
+
+Procedure
+Use Customer Transaction Inquiry screen to select an invoice you want to credit.
+
+*Reference filed is set for next Credit Note number.
+
+Use Credit Quantity field to set right quantity.
+Credit Note Type field can be set to:
+Items Returned to Inventory Location
+Items Written Off
+Tips and Tricks
+Credit Note once created can be later search or printed on Customer Transaction Inquiry screen.
+
+
+
+Print and Modify invoices here: Customer Transaction Inquiry
+
+
+
+Typical customer service process:
+Sales Quotation Entry
+Sales Order Entry
+Delivery Against Sales Orders
+Invoice Against Sales Delivery
+
+
+
+Invoicing Notes
+When printing Invoices from print-out center, you can select to include a Paypal link.
+If you want to be paid by credit card, then create a bank account with the name of the credit card.
+Configure invoice print layout.
+Before invoicing service type items to customers, the service items must be explicitly added to the list of items as such.
+Legal Text is available only in Invoice and not in Order Entry form.
+The Customer Reference is available as an option for input in all Sales Forms (Sales Quotation, Order, Delivery and Invoice) where the Payment Terms (mandatory) is "Non Cash". 
+Salesman restriction possibilities in Role Permissions
+
+
+
+Running Total for Final Invoice
+The ultimate goal is to finalize the invoice at the end of the month after inputting all material and service deliveries during the month.
+
+Solution:
+
+Create a UOM for hours; set to 2 decimal places, (or one for minutes to be exact)
+Then create an item with the name of your service, make sure you select service for Item Type:, select the above UOM and make sure you check the box marked Editable description:
+Make sure you have the term of payment you require Setup -> Payment Terms ('Day in the following month' would probably be best for you)
+Then go to Sales -> Sales Order Entry
+Select the credit terms you require; do not leave as Cash. and fill out the rest of the details.
+Select the item you created above, now because you checked the box marked Editable description, you can amend the Item Description to anything you want, in your case add the date, job number, etc. fill in the rest of the Item line...quantity...price(setup sales price first and this will fill automatically).. etc
+When you finish click 'Place Order'.
+The next day go to ->Sales Order Inquiry and find the sales order you made the day before (you may need to change the search parameters ie., date).
+Click the edit icon on the right, you should now see the previous order and can add another Item line with this days work...
+when you finish click the button labelled Commit Order Changes.
+Then repeat this procedure for every day.
+At the the end of the month after you've entered the last day you will see an option to Confirm Order Quantities and Make Delivery.
+Check the details then click Process Despatch button.
+You will see an option to Invoice This Delivery, one last chance to change only quantities.
+Click Process Invoice and your customer will have an itemised bill.
+
+
+
+Cash Sale
+Scenario: Customer just walks in, buys the items by paying the cash.
+Set up a cash customer with a cash branch
+In the branch, select a cash account as Account Receivable Account
+Set the Payment Terms on the cash customer to 0 days
+All the statistics are now available for it too now
+Don't forget to set up: Setup -> POS setup -> Cash Account
+
+
+
+Credit Card Sale
+Setup => Payment Terms => create new payment terms as Cash type but name it Credit Card.
+Create a GL Account similar to Petty Cash account_code and call it Credit Card (CC).
+Create a bank account for Credit Cards and assign the Credit Card GL Account to it - this is your merchant bank account.
+Create a POS for Credit Cards in Setup => Points of Sale and assign it the bank account for Credit Cards with atleast Cash sales enabled.
+Create a new user with appropriate credentials and assign the POS for Credit Cards to it.
+Now this new user can create credit card payment invoices that would go to the Credit Card Cash Account.
+
+
+
+Prepaid Sale
+Prepayment terms are not available in Direct Invoice form.
+If they are on your setup, you have badly defined prepayment terms.
+To issue invoice in prepayment mode:
+Enter Sales Order first,
+Then enter received payment
+Finally issue invoice against the payment in Invoice Prepaid Orders screen.
+Prepayment invoices are maintained in this special procedure, as what is invoiced here exactly, is payment received, not the goods sold.
+
+Prepaid Sales and Purchases are now available in FA 2.4.x but use with care.
+
+Pre-Requisites for a Prepaid Order
+Add a Prepayment type Payment Terms in Sales => Payment Terms page
+Create a Deferred Income Account in the Chart Master under Current Liabilities if one does not exist, say in the Standard CoA's as 2105
+Choose this Deferred Income Account in the Banking and GL Setup page under the same head.
+Now we can make a Sales Order with the Payment Terms as Prepayment, accept payments for it and then invoice the Prepaid Order.
+Deferred Income Account
+As of Dec 2017, none of the official Charts of Accounts including the Standard ones have a Prepaid Type Payment Term and Deferred Income Account by default.
+
+Note that when a delivery is attempted for a cash sale an error ensues if a Deferred Income Account has not been set in Setup->System and General Ledger Setup.
+Deferred revenue is not yet revenue. It is an amount that was received by a company in advance of earning it. The amount unearned (and therefore deferred) as of the date of the financial statements should be reported as a liability. The title of the liability account might be Unearned Revenues or Deferred Revenues.
+
+
+
+Change Customer on Edit Customer Payment
+If the customer payment is allocated to an invoice, and if you are editing the payment change the customer.
+The allocation part gets confused with allocated customer and payment customer.
+If you want to edit the customer, you have to edit the allocation and allocated invoice to maintain the allocation.
+
+
+
+One Time Sale - Do not save Ship To Address to Customer
+The goal is to add the ship-to address without saving to customer in FrontAccounting
+To display the order delivery details in sales order entry, you need to use a payment type with a non-zero number of days.
+
+
+
+Remove Item Code from Invoice
+doctext.inc has the label for the Item Code field that can be replaced with a blank string.
+The appropriate report (like rep107.php) can be edited for where the Item Code line prints and can be placed in the appropriate company/#/reporting folder.
+
+
+
+100% Discount Item
+When we choose to offer an Service item (does not affect inventory) for free but would like to see the unit rate and qty in the printed invoice we need to enter the discount as a separate line item with negative rate to indicate the discount.
+
+
